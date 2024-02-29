@@ -38,6 +38,8 @@
               <?php the_field('podval_pochta', 'options');?>
               </a>
             </div>
+
+            <a href="<?php the_field('oferta', 'options');?>" download class="footer-block__item-robokassa">ПУБЛИЧНАЯ ОФЕРТА  о заключении договора поставки товара</a>
           </div>
         </div>
       </div>

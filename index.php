@@ -6,8 +6,8 @@
 
 <?php get_header('home');?>
   
-     <main class="main">
-        <section class="heading">
+     <main class="main main-home">
+        <section class="heading" style="background: url('<?php the_field('pervyj_blok_kartinka');?>');" no-repeat;>
             <video class="heading__video" poster="<?php the_field('pervyj_blok_video_kartinka');?>">
             <source class="heading__video--video" src="<?php the_field('pervyj_blok_video');?>" type="video/mp4">
             </video>
@@ -27,7 +27,7 @@
                 </div>
                 <div id="controls" class="hidden">
                 <a href="#" class="heading-block--btn" id="playBtn">
-                    <img src="<?php echo get_template_directory_uri()?>./assets/images/home/play-btn.png" alt="">
+                    <img src="<?php echo get_template_directory_uri()?>/assets/images/home/play-btn.png" alt="">
                 </a>
                 </div>
             </div>
@@ -104,7 +104,7 @@
               </video>
               <div id="controls" class="hidden">
                 <a class="playBtn-1" id="playBtn-1">
-                  <img src="<?php echo get_template_directory_uri()?>./assets/images/home/goalkeeper-play.png" alt="img">
+                  <img src="<?php echo get_template_directory_uri()?>/assets/images/home/goalkeeper-play.png" alt="img">
                 </a>
               </div>
             </div>
@@ -154,7 +154,7 @@
               </video>
               <div id="controls" class="hidden">
                 <a class="playBtn-2" id="playBtn-2">
-                  <img src="<?php echo get_template_directory_uri()?>./assets/images/home/goalkeeper-play.png" alt="img">
+                  <img src="<?php echo get_template_directory_uri()?>/assets/images/home/goalkeeper-play.png" alt="img">
                 </a>
               </div>
             </div>

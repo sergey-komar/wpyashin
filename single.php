@@ -15,7 +15,7 @@
                 </div>
                 <div class="fees-block__img">
                     <div class="fees-block__inner">
-                        <img src="<?php the_post_thumbnail_url();?>" alt="img">
+                        <img src="<?php the_post_thumbnail_url();?>" alt="">
                     </div>
                 </div>
             </div>

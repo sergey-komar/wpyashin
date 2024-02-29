@@ -1,6 +1,6 @@
 <?php
 /**
- * TemplateName: Мероприятия
+ * TemplateName: Интенсивы
  */
 ?>
 <?php get_header();?>
@@ -18,14 +18,14 @@
             <div class="events-page__block">
                 <?php
                     global $post;
-                    $events = new WP_Query([
-                        'post_type' => 'events',
+                    $intensives = new WP_Query([
+                        'post_type' => 'intensives',
                         'posts_per_page' => '8',
                         'paged' => $paged,
                        
                     ])
                 ?>
-                <?php if( $events->have_posts()) : while($events->have_posts()) : $events->the_post();?>
+                <?php if( $intensives->have_posts()) : while($intensives->have_posts()) : $intensives->the_post();?>
                 <div class="events-page__item">
                     <div class="events-page__item-title"><?php the_title();?></div> 
                     <a href="<?php the_permalink()?>" class="events-page__item-link">
@@ -46,7 +46,7 @@
                     'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
                     'format' => '?paged=%#%',
                     'current' => max( 1, get_query_var('paged') ),
-                    'total' => $events->max_num_pages,
+                    'total' => $intensives->max_num_pages,
                     'prev_text'    => __('« Назад'),
                     'next_text'    => __('Вперёд »'),
                 ) );

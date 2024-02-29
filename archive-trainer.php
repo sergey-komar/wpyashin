@@ -12,54 +12,58 @@
     </div>
 
     <section class="trainer">
-    <div class="container">
-        <h1 class="trainer__title title"><?php post_type_archive_title()?></h1>
-        <div class="trainer-block">
-            <?php
-                global $post;
-                $trainer = new WP_Query([
-                    'post_type' => 'trainer',
-                    'posts_per_page' => '30',
+        <div class="container">
+            <h1 class="trainer__title title"><?php post_type_archive_title()?></h1>
+            <div class="trainer-block">
+                <?php
+                    global $post;
+                    $trainer = new WP_Query([
+                        'post_type' => 'trainer',
+                        'posts_per_page' => '8',
+                        'paged' => $paged,
+                        
+                    ])
+                ?>
+                <?php if( $trainer->have_posts()) : while($trainer->have_posts()) : $trainer->the_post();?>
+                <div class="trainer-block__item">
+                    <div class="trainer-block__item-img">
+                        <img src="<?php echo get_template_directory_uri()?>./assets/images/home/trainer.png" alt="">
+                    </div>
+                    <div class="trainer-block__content">
+                        <div class="trainer-block__content-title"><?php the_title();?></div>
+                        <ul class="trainer-block__list">
+                            <?php if(have_rows('trenery_spisok')) : while(have_rows('trenery_spisok')) : the_row();?>
+                            <li class="trainer-block__list-item">
+                            <?php the_sub_field('trenery_spisok_tekst');?>
+                            </li>
+                            <?php endwhile; endif;?>
+                        </ul>
+                        <div class="trainer-block__content-text">
+                           <?php the_field('trenery_tekst')?>
+                        </div>
                     
-                ])
-            ?>
-             <?php if( $trainer->have_posts()) : while($trainer->have_posts()) : $trainer->the_post();?>
-            <div class="trainer-block__item">
-                <div class="trainer-block__item-img">
-                    <img src="<?php echo get_template_directory_uri()?>./assets/images/home/trainer.png" alt="img">
-                </div>
-                <div class="trainer-block__content">
-                    <div class="trainer-block__content-title"><?php the_title();?></div>
-                    <ul class="trainer-block__list">
-                        <li class="trainer-block__list-item">
-                            Лицензия тренера по работе с вратарями РФС
-                        </li>
-                        <li class="trainer-block__list-item">
-                            3 года в Академии ФК «Мордовия»
-                        </li>
-                        <li class="trainer-block__list-item">
-                            2 года тренер вратарей в ФШ «Штудгард»
-                        </li>
-                        <li class="trainer-block__list-item">
-                            3 года старший тренер вратарей, главный судья турниров в «Школа Вратарей им.Л.Яшина»
-                        </li>
-                        <li class="trainer-block__list-item">
-                            Профессиональный специалист по организации питания для спортсменов
-                        </li>
-                        <li class="trainer-block__list-item">
-                            Профессиональный специалист по физической подготовке
-                        </li>
-                    </ul>
-                    <div class="trainer-block__content-text">
-                        На первое место ставит психологию и эмоциональную составляющую тренировки. Основная цельв тренировке - воспитать лидера.
                     </div>
                 </div>
+                <?php endwhile; endif;?>
+                <?php wp_reset_postdata();?>
+                
             </div>
-            <?php endwhile; endif;?>
-            <?php wp_reset_postdata();?>
-            
+
+            <div class="pagination">
+                <?php
+                $big = 999999999; // need an unlikely integer
+
+                echo paginate_links( array(
+                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                    'format' => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                    'total' => $trainer->max_num_pages,
+                    'prev_text'    => __('« Назад'),
+                    'next_text'    => __('Вперёд »'),
+                ) );
+                ?>
+            </div>
         </div>
-    </div>
     </section>
 
 </main>

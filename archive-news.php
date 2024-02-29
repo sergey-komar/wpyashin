@@ -1,6 +1,6 @@
 <?php
 /**
- * TemplateName: Новости
+ * TemplateName: О школе
  */
 ?>
 <?php get_header();?>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="news-block__item-title"><?php the_title();?></div>
                 <a href="<?php the_permalink()?>" class="news-block__item-link">
-                    <img src="<?php echo get_template_directory_uri()?>./assets/images/home/news-arrows.svg" alt="img">
+                    <img src="<?php echo get_template_directory_uri()?>./assets/images/home/news-arrows.svg" alt="">
                 </a>
             </div>
             <?php endwhile; endif;?>

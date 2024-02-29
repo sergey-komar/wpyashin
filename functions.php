@@ -17,7 +17,7 @@ function yashin() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('woocommerce');
-    add_theme_support( 'wc-product-gallery-zoom' );
+    // add_theme_support( 'wc-product-gallery-zoom' );
     add_theme_support( 'wc-product-gallery-lightbox');
     add_theme_support( 'wc-product-gallery-slider' );
 
@@ -47,6 +47,16 @@ if( function_exists('acf_add_options_page') ) {
         'redirect'		=> false
     )); 
 }
+
+
+
+// define ('DISALLOW_FILE_EDIT', true);
+// add_action("admin_menu", "remove_menus");
+// function remove_menus() {
+  
+//      remove_menu_page("plugins.php");              
+   
+// }
 
 
 

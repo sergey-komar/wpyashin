@@ -64,9 +64,8 @@ do_action( 'woocommerce_before_main_content' );
                     <div class="search__sort">
                         <button class="search__sort-btn">Сортировать по</button>
                         <ul class="search__list">
-							<li><a class="search__list-link--active" href="?orderby=date" <?php if(isset($_GET['orderby']) && 'date' == $_GET['orderby']) : ?> class="active"<?php endif;?>>Сначала новые</a></li>
+							<li><a href="?orderby=date" <?php if(isset($_GET['orderby']) && 'date' == $_GET['orderby']) : ?> class="active"<?php endif;?>>Сначала новые</a></li>
 							<li><a href="?orderby=popularity" <?php if(isset($_GET['orderby']) && 'popularity' == $_GET['orderby']) : ?> class="active"<?php endif;?>>По популярности</a></li>
-							<li><a href="?orderby=rating" <?php if(isset($_GET['orderby']) && 'rating' == $_GET['orderby']) : ?> class="active"<?php endif;?>>По среднему рейтингу</a></li>
 							<li><a href="?orderby=price" <?php if(isset($_GET['orderby']) && 'price' == $_GET['orderby']) : ?> class="active"<?php endif;?>>По цене &uarr;</a></li>
 							<li><a href="?orderby=price-desc" <?php if(isset($_GET['orderby']) && 'price-desc' == $_GET['orderby']) : ?> class="active"<?php endif;?>>По цене &darr;</a></li>
                         </ul>

@@ -11,6 +11,9 @@ remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 // Отключаем распродажа на странице магазина
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
 
+// Отключаем распродажа на странице товара
+remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
+
 // Отключаем в корзину на странице магазина
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
@@ -102,7 +105,7 @@ function wpbl_remove_some_fields( $array ) {
     unset( $array['order']['order_comments'] ); // Примечание к заказу
      //unset( $array['billing']['billing_phone'] ); // Телефон
    
-       unset( $array['billing']['billing_company'] ); // Компания
+       //unset( $array['billing']['billing_company'] ); // Компания
       // unset( $array['billing']['billing_city'] ); // Населённый пункт
 
     unset( $array['billing']['billing_address_2'] ); // 2-ая строка адреса 
@@ -111,7 +114,7 @@ function wpbl_remove_some_fields( $array ) {
    
     unset( $array['billing']['billing_state'] ); // Область / район
     unset( $array['billing']['billing_postcode'] ); // Почтовый индекс
-      //unset( $array['billing']['billing_address_1'] ); // 1-ая строка адреса 
+    //unset( $array['billing']['billing_address_1'] ); // 1-ая строка адреса 
     // Возвращаем обработанный массив
     return $array; 
     
@@ -127,10 +130,12 @@ function wplb_email_first( $array ) {
     $array['billing']['billing_phone']['priority'] = 40;
     $array['billing']['billing_country']['priority'] = 50;
     $array['billing']['billing_city']['priority'] = 60;
-    $array['billing']['billing_address_1']['priority'] = 100;
+    $array['billing']['billing_address_1']['priority'] = 70;
+    $array['billing']['billing_company']['priority'] = 120;
+   
    
 
-
+    $array['billing']['billing_company']['label'] = 'Комментарий';
     
     // Возвращаем обработанный массив
     return $array;
